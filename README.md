@@ -1,38 +1,18 @@
-# Woow_anythingllm_docker_compose_all
+# Woow anythingllm — MOVED / 已遷移
+
+> [!IMPORTANT]
+> **This repository has been split into per-platform repositories and is now
+> archived.** The branch-per-platform layout is retired; the K3s deployment now
+> lives in its own repo:
+>
+> | Platform | New repository | Replaces branch |
+> |----------|----------------|-----------------|
+> | K3s / Kubernetes (now a **Helm chart**) | [**Woow_k3s_anythingllm**](https://github.com/WOOWTECH/Woow_k3s_anythingllm) | `k3s` |
+>
+> 本倉庫已依部署平台拆分為獨立倉庫並封存,K3s 分支內容(含完整 git 歷史)已遷移至
+> 上表新倉庫並改為 Helm chart。Compose/HA 佈局在舊倉庫中並無實質內容,未拆分。
+
 ---
 
-## K3s/Kubernetes Deployment
-
-This project also supports deployment on **K3s/Kubernetes** clusters. The K3s manifests are maintained on a separate branch.
-
-### Quick Start (K3s)
-
-```bash
-# Clone the k3s branch
-git clone -b k3s https://github.com/WOOWTECH/Woow_anythingllm_docker_compose_all.git Woow_anythingllm_docker_compose_all-k3s
-cd Woow_anythingllm_docker_compose_all-k3s
-
-# Edit secrets before deploying
-nano secret.yaml
-
-# Deploy to your k3s cluster
-kubectl apply -k .
-
-# Verify pods are running
-kubectl -n anythingllm get pods
-```
-
-### Deployment Methods Comparison
-
-| Feature | Podman/Docker Compose | K3s/Kubernetes |
-|---------|----------------------|----------------|
-| Branch | `main` | `k3s` |
-| Orchestrator | Podman / Docker | K3s / Kubernetes |
-| Config format | `.env` + `docker-compose.yml` | ConfigMap + Secret + YAML manifests |
-| Scaling | Manual | `kubectl scale` |
-| Health checks | Docker healthcheck | liveness/readiness/startup probes |
-| Service discovery | Docker DNS | Kubernetes DNS (`svc.cluster.local`) |
-| Storage | Docker volumes | PersistentVolumeClaims |
-| Rolling updates | `docker compose pull && up -d` | `kubectl rollout restart` |
-
-> For full K3s deployment documentation, switch to the [`k3s` branch](https://github.com/WOOWTECH/Woow_anythingllm_docker_compose_all/tree/k3s).
+The original branches remain readable here for reference, but all future
+development happens in the new repository.
